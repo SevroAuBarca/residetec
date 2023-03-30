@@ -1,6 +1,6 @@
-import db from "../models";
+import db from "../models/index.js";
 
-const getUsuario = async (req: any, res: any) => {
+const getUsuario = async (req, res) => {
   const { id } = req.params;
   console.log(id);
   const user = await db.Usuarios.findByPk(id).catch((_) =>

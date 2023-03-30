@@ -1,7 +1,6 @@
-import Sequelize from "sequelize/types/sequelize";
 import { DataTypes } from "sequelize";
 
-const loginModel = (sequelize: Sequelize) => {
+const loginModel = (sequelize) => {
   const Login = sequelize.define(
     "logins",
     {

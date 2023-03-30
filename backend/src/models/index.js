@@ -1,8 +1,8 @@
-import dbConfig from "../config/db.config";
-import usuariosModel from "./usuarion";
-import rolesModel from "./roles";
-import loginModel from "./login";
-import publicacionesModel from "./publicaciones";
+import dbConfig from "../config/db.config.js";
+import usuariosModel from "./usuarion.js";
+import rolesModel from "./roles.js";
+import loginModel from "./login.js";
+import publicacionesModel from "./publicaciones.js";
 import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {

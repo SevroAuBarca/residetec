@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import SECRET_KEY from "../config/auth.config";
+import SECRET_KEY from "../config/auth.config.js";
 
 const verificarToken = (req, res, next) => {
   let token = req.headers["x-access-token"];

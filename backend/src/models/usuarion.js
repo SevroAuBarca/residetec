@@ -1,7 +1,6 @@
-import Sequelize from "sequelize/types/sequelize";
 import { DataTypes } from "sequelize";
 import dayjs from "dayjs";
-const usuariosModel = (sequelize: Sequelize) => {
+const usuariosModel = (sequelize) => {
   const Usuarios = sequelize.define(
     "usuarios",
     {

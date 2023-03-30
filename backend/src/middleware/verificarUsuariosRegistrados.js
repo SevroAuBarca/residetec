@@ -1,6 +1,6 @@
-import db from "../models";
+import db from "../models/index.js";
 
-const verificarUsuariosDuplicados = (req: any, res: any, next: any) => {
+const verificarUsuariosDuplicados = (req, res, next) => {
   // Username
   db.Usuarios.findOne({
     where: {

@@ -1,11 +1,11 @@
-import db from "../models/index";
-const getPublicaciones = async (req: any, res: any) => {
+import db from "../models/index.js";
+const getPublicaciones = async (req, res) => {
   const publicaciones = await db.Publicaciones.findAll();
 
   res.send(publicaciones);
 };
 
-const getPublicacion = async (req: any, res: any) => {
+const getPublicacion = async (req, res) => {
   const { id } = req.params;
 
   const publicacion = await db.Publicaciones.findByPk(id);
@@ -13,7 +13,7 @@ const getPublicacion = async (req: any, res: any) => {
   res.send(publicacion);
 };
 
-const postPublicacion = async (req: any, res: any) => {
+const postPublicacion = async (req, res) => {
   const { id } = req.params;
 
   await db.Publicaciones.create({
@@ -23,7 +23,7 @@ const postPublicacion = async (req: any, res: any) => {
     informacion: req.body.informacionGeneral,
     carrera: req.body.carrera,
     id_usuario: id,
-  }).catch((err) => res.send({ message: err }));
+  });
 
   res.send({
     ok: true,

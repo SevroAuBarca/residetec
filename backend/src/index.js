@@ -1,14 +1,14 @@
 import express from "express";
 import cors from "cors";
-import db from "./models";
-import verificarUsuariosDuplicados from "./middleware/verificarUsuariosRegistrados";
-import { login, registrar } from "./controllers/auth";
-import getUsuario from "./controllers/usuarios";
+import db from "./models/index.js";
+import verificarUsuariosDuplicados from "./middleware/verificarUsuariosRegistrados.js";
+import { login, registrar } from "./controllers/auth.js";
+import getUsuario from "./controllers/usuarios.js";
 import {
   getPublicacion,
   getPublicaciones,
   postPublicacion,
-} from "./controllers/publicaciones";
+} from "./controllers/publicaciones.js";
 
 const port = 9000;
 const app = express();
@@ -21,7 +21,7 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async (req: Request, res: any) => {
+app.get("/", async (req, res) => {
   //split letters of a string
   const roles = await db.Roles.findAll({
     attributes: ["id_rol", "rol"],
