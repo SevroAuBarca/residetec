@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { shallow } from "zustand/shallow";
 import useLoginStore from "../store/loginStore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,6 +16,7 @@ function classNames(...classes) {
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const { login, setLogin } = useLoginStore(
     (store) => ({
       login: store.login,
@@ -29,6 +30,13 @@ const Header = () => {
       setLogin(JSON.parse(localStorage.getItem("auth")));
     }
   }, [setLogin]);
+
+  const handleLogout = () => {
+    setLogin(null);
+    localStorage.clear();
+    console.log(login);
+    navigate("/");
+  };
   return (
     <header className="bg-white">
       <nav
@@ -61,13 +69,15 @@ const Header = () => {
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {login && (
-            <Link to={`user/${login.id}`}>
-              <img
-                class="inline-block h-12 w-auto rounded-full ring-2 ring-white mr-6"
-                src="https://api.iconify.design/ic:round-account-circle.svg"
-                alt=""
-              />
-            </Link>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end mr-5">
+              <button
+                onClick={handleLogout}
+                href="#"
+                class="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Cerrar Sesion <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
           )}
           <a href="#" className="-m-1.5 p-1.5">
             <img className="h-12 w-auto" src={logoTecCuautla} alt="" />
